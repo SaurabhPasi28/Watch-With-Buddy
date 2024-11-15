@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.socket.io/3.1.1/socket.io.min.js" integrity="sha384-gDaozqUvc4HTgo8iZjwth73C6dDDeOJsAgpxBcMpZYztUfjHXpzrpdrHRdVp8ySO" crossorigin="anonymous"></script>
+    <!--==================== UNICONS ====================-->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Video party</title>
+    <style>
+      #videoContainer{
+        display: none;
+      }
+    </style>
+</head>
+<body>
+  <div class="Home" id = "input-form">
+    <h3 class='Home__title'>Watch with Buddy</h3>
+    <h3 class='Home__subtitle'>Watch downloaded videos with friends in sync</h3>
+
+    <div class="Home__container">
+
+      <div class="Home__left">
+        <h3 class='left__title'>Would you like to join a room ?</h3>
+        <div class="left__data">
+          <label class="left__label" for="join-room-input">Room Code</label>
+          <input class="left__input" type="text" id = "join-room-input">
+        </div>
+        <button class="left__btn" id = "join-btn">Join</button>
+      </div>
+      
+      <div class="Home__mid">
+
+      </div>
+      <div class="Home__right">
+        <h3 class='right__title'>Would you like to create a room ?</h3>
+        <button class="right__btn" id = "create-btn">Create And Join</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div  id = videoContainer>
+              <!-- ky hall hai aapke -->
+
+
+    <div class="navbar">
+      <a href="#" class="navbar-logo">Your Logo</a>
+      <div class="navbar-search">
+        <div class="youtube-icon">
+          <i class="fab fa-youtube"></i>
+        </div>
+          <input type="text" class="search-input" placeholder="Search on YouTube">
+        <div class="search-icon">
+            <i class="fas fa-search"></i>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-info-circle"></i> About</a>
+        <a href="#"><i class="fas fa-envelope"></i> Email</a>
+      </div>
+    </div>
+   <!-- creating display flex wrap for this container -->
+    <div class="grid">
+      <div class = "video-c" id="toFull">
+          <video id = "videoPlayer" class = "video">
+              <source src = "/video" type = "video/mp4"/>
+          </video>
+          <div class="video-controls">
+            <div><button id = "play-pause">&#9658</button></div>
+            <div class = "progress-bar-div"><progress id = "progress-bar" max = 100 min =0></progress></div>
+            <div><button id="volinc" type="button"><i class="uil uil-volume"></i></button></div>
+            <div><button id="voldec" type="button"><i class="uil uil-volume-down"></i></button></div>
+            <div><button id = "fullscreen"><i class="uil uil-expand-arrows-alt"></i></button></div>
+          </div>
+      </div>
+
+      <!-- chat part -->
+      <div class="main">
+        <div class="room">
+          <div class="room__data">
+            <div class="tooltip">
+              <button onclick="coppyCode()" onmouseout="outFunc()" class="room__label">Coppy & Share
+                <span class="tooltiptext" id="myTooltip">Copy Code</span>
+              </button>
+            </div>
+            <input  class="room__input" type="text" id = "create-room-input"  placeholder=" Code" disabled>
+            <span><i class="far fa-user"></i></span>
+            <p class="total-clients" id="total-clients">0</p>
+          </div>
+        </div>
+
+    
+        <ul class="message-container" id="message-container">
+            <li class="message-left">
+                <p class="message">
+                    <span></span>
+                </p>
+            </li>
+    
+            <li class="message-right">
+                <p class="message">
+                    <span></span>
+                </p>
+            </li>
+    
+            <li class="message-feedback">
+                <p class="feedback" id="feedback"></p>
+            </li>
+        </ul>
+    
+    
+        <form class="message-form" id="message-form">
+            <input type="text" name="message" id="message-input" class="message-input">
+            <div class="v-divider"></div>
+                <button type="submit" class="send-button">
+                    Send <span><i class="fas fa-paper-plane"></i></span>
+                </button>
+        </form>
+      </div>
+
+    </div>
+
+
+  </body>
+<script src = "web.js"></script>
+</html>
